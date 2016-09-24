@@ -1,0 +1,55 @@
+/* Base Application Styles */
+body {
+  background: #fff;
+}
+
+.container {
+  width: 500px;
+  min-height: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px #888;
+  box-sizing: border-box;
+
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+.input-item {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.input-item input {
+  margin: 0;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 300px;
+  height: 36px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ddd;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 10px #ddd;
+}
+.input-item input:focus {
+  outline: none;
+}
+
+ul.todo-list {
+  list-style: none;
+  padding-left: 0;
+
+  font-size: 18px;
+}
+ul.todo-list .list-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+ul.todo-list .list-item+.list-item {
+  border-top: 1px solid #ddd;
+}
