@@ -5,8 +5,13 @@ import React from 'react';
 import InputItem from './InputItem';
 import TodoList from './TodoList';
 
+let localforage = require('localforage');
+let thingDB = localforage.createInstance({
+  name: "thingDB"
+});
+
 class AppComponent extends React.Component {
-  
+
   constructor(props) {
   	super(props);
 
@@ -14,17 +19,26 @@ class AppComponent extends React.Component {
       localStorage.setItem('things', JSON.stringify([]));
     }
 
-  	this.state = {
-  		"things": JSON.parse(localStorage.getItem('things'))
-  	};
+    this.state = {
+      'things': []
+    }; 
 
   	this.addThing = this.addThing.bind(this);
   }
 
+  componentWillMount() {
+    thingDB.getItem('things').then((value) => {
+      if(value instanceof Array) {
+        this.state.things = value;
+        this.setState(this.state);
+      }
+    });
+  }
+
   addThing(thing) {
-	this.state.things.push(thing);
-	localStorage.setItem("things", JSON.stringify(this.state.things));
-	this.setState(this.state);
+  	this.state.things.push(thing);
+  	thingDB.setItem("things", this.state.things);
+  	this.setState(this.state);
   }
 
   render() {
